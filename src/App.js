@@ -6,16 +6,23 @@ class App extends Component {
     map: ''
   }
 
-  initMap = () => {
+  componentDidMount() {
+    window.initMap = this.initMap;
+    // Asynchronously load the Google Maps script, passing in the callback reference
+    loadMap('https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvBlgk3XhfDN1-mmzvzE9lJOX2A784gE&callback=initMap');
+  }
 
-  let myLatLng = {lat: 41.9043799, lng: 12.4647467}
-  let view = document.getElementById('map');
+  initMap=() => {
+    let myLatLng = {lat: 41.9043799, lng: 12.4647467};
+    let view = document.getElementById('map')
+    let map;
 
-  const map = new window.google.maps.Map(view, {
-    center: myLatLng,
-    zoom: 13,
-  });
-}
+    view.style.height = window.innerHeight + "px";
+    map = new window.google.maps.Map(view, {
+      center: myLatLng,
+      zoom: 13
+    });
+  }
 
   render() {
     return (
@@ -29,3 +36,9 @@ class App extends Component {
 }
 
 export default App;
+
+function loadMap(src) {
+  const script = window.document.createElement("script");
+  script.src = src;
+  script.async = true;
+}
