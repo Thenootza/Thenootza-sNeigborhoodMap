@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
-import './App.css';
+import { getMarkerInfo } from './infowindow'
+import './App.css'
 
 class App extends Component {
-  state={
-    map:'',
-
+  state = {
+      anchors: [
+        { name: 'Castel Sant Angelo', latitude: 41.9016188, longitude: 12.4564238 },
+        { name: 'Sistine Chapel', latitude: 41.90438, longitude: 12.464747 },
+        { name: 'Colosseum', latitude: 41.8937696, longitude: 12.4639335 },
+        { name: 'Palazzo Braschi', latitude: 41.8973153, longitude: 12.4636813 },
+        { name: 'Capitoline Museums', latitude: 41.8929428, longitude: 12.480369 },
+        { name: 'Ponte Sisto', latitude: 41.8930356, longitude: 12.4660515 },
+        { name: 'Pantheon', latitude: 41.8951521, longitude: 12.4683479 },
+        { name: 'National Roman Museum, The Baths of Diocletian', latitude: 41.9100714, longitude: 12.4498737 },
+        { name: 'Villa Medici', latitude: 41.9053136, longitude: 12.4656592 },
+      ],
+      map: '',
+      infowindow: '',
   }
 
   componentDidMount() {
     window.initMap = this.initMap;
     // Asynchronously load the Google Maps script, passing in the callback reference
-    loadMap();
+    loadMap('https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvBlgk3XhfDN1-mmzvzE9lJOX2A784gE&callback=initMap');
   }
 
-  initMap=() => {
-    let inside=this;
+  initMap = () => {
     const { anchors } = this.state;
-    let myLatLng = {lat: 41.9043799, lng: 12.4647467};
-    let view = document.getElementById('map');
-    view.style.height = window.innerHeight + "px";
-    let map = new window.google.maps.Map(view, {
+    let inside = this;
+    let myLatLng = { lat: 41.9043799, lng: 12.4647467 }
+    const map = new window.google.maps.Map(document.getElementById('map'), {
       center: myLatLng,
-      zoom: 13
+      zoom: 13,
     });
 
     let InfoWindow = new window.google.maps.InfoWindow({});
@@ -54,8 +64,8 @@ class App extends Component {
         inside.openInfoWindow(marker);
       });
 
-    location.marker = marker;
-    mydreamlocations.push(location);
+      location.marker = marker;
+      mydreamlocations.push(location);
     });
     this.setState({ anchors: mydreamlocations });
   }
@@ -63,18 +73,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div id='map' style={{height: `100%`}}>
-            Map is loading...
+          <div id="map"></div>
         </div>
-      </div>
     );
   }
+
 }
 
 export default App;
 
 function loadMap(src) {
+  const catchScript = window.document.getElementsByTagName("script")[0];
   const script = window.document.createElement("script");
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvBlgk3XhfDN1-mmzvzE9lJOX2A784gE&callback=initMap';
+  script.src = src;
   script.async = true;
+  script.onerror = function () {
+    document.write("An error occurred while loading the map.");
+  };
+  catchScript.parentNode.insertBefore(script, catchScript);
 }
