@@ -72,6 +72,14 @@ class App extends Component {
     this.setState({ anchors: mydreamlocations });
   }
 
+  map_error = () => {
+    let errorName = "error";
+    let errorContent = "OOPS!!! An error occurred while loding the map";
+    let element = document.getElementById('map');
+    element.classList.add(errorName);
+    element.innerHTML = errorContent;
+  }
+
   openInfoWindow = (marker) => {
     this.closeInfoWindow();
     this.state.infowindow.open(this.state.map, marker);

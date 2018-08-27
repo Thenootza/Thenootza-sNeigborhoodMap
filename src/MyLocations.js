@@ -31,8 +31,8 @@ class MyLocations extends Component {
           <div>
           <input
             type="text"
-            title="select a specific place"
-            placeholder="Select a specific place"
+            title="Select place"
+            placeholder="Select a place"
             value={this.state.searchResults} onChange={this.searchLocation}/>
 
             <ol>
