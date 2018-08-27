@@ -11,7 +11,7 @@ class MyLocations extends Component {
     this.props.closeInfoWindow();
     const { value } = event.target;
     let locations = [];
-    this.props.points.forEach(function (location) {
+    this.props.anchors.forEach(function (location) {
       if ( location.name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
         location.marker.setVisible(true);
         locations.push(location);
@@ -27,9 +27,22 @@ class MyLocations extends Component {
   }
 
   render() {
-    return (
-      
-    )
+        return (
+          <div>
+          <input
+            type="text"
+            title="select a specific place"
+            placeholder="Select a specific place"
+            value={this.state.searchResults} onChange={this.searchLocation}/>
+
+            <ol>
+              {this.state.locations.map((list, index) => (
+                <MyAnchors key={index} openInfoWindow={this.props.openInfoWindow} data={list}
+                />
+              ))}
+            </ol>
+            </div>
+        )
     }
   }
 export default MyLocations;
