@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { markerInfo } from './infowindow'
+import MyLocations from './MyLocations'
 import './App.css'
 
 class App extends Component {
@@ -89,8 +90,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <div id="map"></div>
-        </div>
+      <MyLocations
+        anchors={this.props.anchors}
+        openInfoWindow={this.props.openInfoWindow}
+        closeInfoWindow={this.props.closeInfoWindow}/>
+
+        <div id="map"></div>
+      </div>
     );
   }
 
