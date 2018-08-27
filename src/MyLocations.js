@@ -33,6 +33,8 @@ class MyLocations extends Component {
             type="text"
             title="Select place"
             placeholder="Select a place"
+            role="search"
+            aria-labelledby="input search-field"
             value={this.state.searchResults} onChange={this.searchLocation}/>
 
             <ol>
