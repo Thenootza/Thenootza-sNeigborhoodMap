@@ -28,11 +28,11 @@ class MyLocations extends Component {
 
   render() {
         return (
-          <div className='search-bar'>
+          <div className='header'>
           <input
             type="text"
-            title="Select place"
-            placeholder="Select a place"
+            title="Search place"
+            placeholder="Search for a place"
             role="search"
             aria-labelledby="input search-field"
             value={this.state.searchResults} onChange={this.searchLocation}/>

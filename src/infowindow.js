@@ -13,9 +13,9 @@ export const markerInfo = (marker, infowindow) => {
       response.json()
       .then( (data) => {
         if(data[2].length) {
-          let info = `<b>${data[0]}</b>
-          <p>${data[2][0]}</p>
-          <a href="${data[3][0]}" target="_blank">Read more on wiki</a>`;
+          let info = `<h2 class="anchors">${data[0]}</h2>
+          <p class="anchors">${data[2][0]}</p>
+          <a href="${data[3][0]}" target="_blank" class="anchors">Read more on wiki</a>`;
           infowindow.setContent(info);
         } else {infowindow.setContent('OOPS...wiki has no info about this place')};
       });

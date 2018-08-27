@@ -105,7 +105,10 @@ class App extends Component {
         openInfoWindow={this.openInfoWindow}
         closeInfoWindow={this.closeInfoWindow}/>
 
-        <div id="map"></div>
+        <div id="map"
+        role="application"
+        aria-labelledby="Map of Rome"
+        ></div>
       </div>
     );
   }

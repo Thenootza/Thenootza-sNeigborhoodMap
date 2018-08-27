@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Tangerine');
 body {
   margin: 0;
+  padding: 0;
 }
 
 *:focus {
@@ -9,5 +11,31 @@ body {
 
 #map {
   height: 90vh;
-  width: 100%
+  width: 100%;
+}
+
+.header {
+  font-family: 'Tangerine', serif;
+  font-size: 1.5em;
+  background-color: #00b386;
+  padding: 0;
+  margin: 0;
+}
+
+.header input{
+  font-family: 'Tangerine', serif;
+  font-size: 1.5em;
+  width: 100%;
+  border-radius: 1px;
+  background-color: #e6fff9;
+}
+
+.header ul{
+  padding: 0;
+  margin: 0;
+}
+
+.anchors {
+  font-family: 'Tangerine', serif;
+  width: 200px;
 }
