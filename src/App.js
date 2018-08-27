@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getMarkerInfo } from './infowindow'
+import { markerInfo } from './infowindow'
 import './App.css'
 
 class App extends Component {
@@ -17,6 +17,7 @@ class App extends Component {
       ],
       map: '',
       infowindow: '',
+      theMarker:'',
   }
 
   componentDidMount() {
@@ -68,6 +69,21 @@ class App extends Component {
       mydreamlocations.push(location);
     });
     this.setState({ anchors: mydreamlocations });
+  }
+
+  openInfoWindow = (marker) => {
+    this.closeInfoWindow();
+    this.state.infowindow.open(this.state.map, marker);
+    this.setState({ theMarker: marker });
+    this.state.map.setCenter(marker.getPosition());
+    markerInfo(marker, this.state.infowindow);
+  }
+
+  closeInfoWindow = () => {
+    if (this.state.theMarker) {
+      this.setState({ theMarker: '' });
+    }
+    this.state.infowindow.close();
   }
 
   render() {
