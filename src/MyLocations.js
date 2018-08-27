@@ -28,7 +28,7 @@ class MyLocations extends Component {
 
   render() {
         return (
-          <div>
+          <div className='search-bar'>
           <input
             type="text"
             title="Select place"
@@ -37,12 +37,12 @@ class MyLocations extends Component {
             aria-labelledby="input search-field"
             value={this.state.searchResults} onChange={this.searchLocation}/>
 
-            <ol>
+            <ul>
               {this.state.locations.map((list, index) => (
                 <MyAnchors key={index} openInfoWindow={this.props.openInfoWindow} data={list}
                 />
               ))}
-            </ol>
+            </ul>
             </div>
         )
     }

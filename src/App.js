@@ -83,6 +83,7 @@ class App extends Component {
   openInfoWindow = (marker) => {
     this.closeInfoWindow();
     this.state.infowindow.open(this.state.map, marker);
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
     this.setState({ theMarker: marker });
     this.state.map.setCenter(marker.getPosition());
     markerInfo(marker, this.state.infowindow);
@@ -90,8 +91,9 @@ class App extends Component {
 
   closeInfoWindow = () => {
     if (this.state.theMarker) {
-      this.setState({ theMarker: '' });
+      this.state.theMarker.setAnimation(null);
     }
+    this.setState({ theMarker: '' });
     this.state.infowindow.close();
   }
 
@@ -99,9 +101,9 @@ class App extends Component {
     return (
       <div className="App">
       <MyLocations
-        anchors={this.props.anchors}
-        openInfoWindow={this.props.openInfoWindow}
-        closeInfoWindow={this.props.closeInfoWindow}/>
+        anchors={this.state.anchors}
+        openInfoWindow={this.openInfoWindow}
+        closeInfoWindow={this.closeInfoWindow}/>
 
         <div id="map"></div>
       </div>
