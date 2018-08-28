@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
+//The component that lists the places to search for
 class MyAnchors extends Component {
 
   render() {
     return (
       <li
         role="button"
+        aria-label={`show marker for ${this.props.data.name}`}
         aria-label={`${this.props.data.name}`}
         onKeyPress={this.props.openInfoWindow.bind(this, this.props.data.marker)}
         onClick={this.props.openInfoWindow.bind(this, this.props.data.marker)}>

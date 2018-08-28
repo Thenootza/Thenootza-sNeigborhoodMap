@@ -4,6 +4,7 @@ import MyLocations from './MyLocations'
 import './App.css'
 
 class App extends Component {
+  //States of component
   state = {
       anchors: [
         { name: 'Castel Sant Angelo', latitude: 41.9016188, longitude: 12.4564238 },
@@ -21,12 +22,14 @@ class App extends Component {
       theMarker:'',
   }
 
+
   componentDidMount() {
     window.initMap = this.initMap;
     // Asynchronously load the Google Maps script, passing in the callback reference
     loadMap('https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvBlgk3XhfDN1-mmzvzE9lJOX2A784gE&callback=initMap');
   }
 
+  // Initialize the map (within the map div) and everything on it (markers, infowindows and the eventlisteners)
   initMap = () => {
     const { anchors } = this.state;
     let inside = this;
@@ -72,6 +75,7 @@ class App extends Component {
     this.setState({ anchors: mydreamlocations });
   }
 
+  // Throw an error if the map failes to load
   map_error = () => {
     let errorName = "error";
     let errorContent = "OOPS!!! An error occurred while loding the map";
@@ -80,15 +84,18 @@ class App extends Component {
     element.innerHTML = errorContent;
   }
 
+  // Open the info window when a marker is clicked
   openInfoWindow = (marker) => {
     this.closeInfoWindow();
     this.state.infowindow.open(this.state.map, marker);
+    //The marker is bouncing when selected the location corresponding to it
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     this.setState({ theMarker: marker });
     this.state.map.setCenter(marker.getPosition());
     markerInfo(marker, this.state.infowindow);
   }
 
+  // Close the info window
   closeInfoWindow = () => {
     if (this.state.theMarker) {
       this.state.theMarker.setAnimation(null);

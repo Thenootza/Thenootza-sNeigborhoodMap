@@ -1,3 +1,5 @@
+/*Information displayied in the info windows are fetched from wikipedia.org
+as explained here: https://www.mediawiki.org/wiki/API:Main_page*/
 export const markerInfo = (marker, infowindow) => {
 
   let url = `https://en.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=${marker.name}&limit=1`;
@@ -10,8 +12,7 @@ export const markerInfo = (marker, infowindow) => {
         return;
       }
 
-      response.json()
-      .then( (data) => {
+      response.json().then( (data) => {
         if(data[2].length) {
           let info = `<h2 class="anchors">${data[0]}</h2>
           <p class="anchors">${data[2][0]}</p>
@@ -20,8 +21,7 @@ export const markerInfo = (marker, infowindow) => {
         } else {infowindow.setContent('OOPS...wiki has no info about this place')};
       });
     }
-  )
-  .catch(function (err) {
+  ).catch(function (err) {
     infowindow.setContent("Loading data failed", err);
   });
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MyAnchors from './MyAnchors'
 
+//The component that allows you to search for places
 class MyLocations extends Component {
   state = {
     locations: [],
@@ -13,9 +14,11 @@ class MyLocations extends Component {
     let locations = [];
     this.props.anchors.forEach(function (location) {
       if ( location.name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+        // Show the markers that match the search input
         location.marker.setVisible(true);
         locations.push(location);
       } else {
+        //Hide the markers that don't match the search input
         location.marker.setVisible(false);
       }
     });
