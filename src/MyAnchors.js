@@ -8,7 +8,7 @@ class MyAnchors extends Component {
       <li
         role="button"
         aria-label={`show marker for ${this.props.data.name}`}
-        aria-label={`${this.props.data.name}`}
+        tabindex={0}
         onKeyPress={this.props.openInfoWindow.bind(this, this.props.data.marker)}
         onClick={this.props.openInfoWindow.bind(this, this.props.data.marker)}>
 

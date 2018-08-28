@@ -25,6 +25,7 @@ class App extends Component {
 
   componentDidMount() {
     window.initMap = this.initMap;
+    window.gm_authFailure = this.gm_authFailure;
     // Asynchronously load the Google Maps script, passing in the callback reference
     loadMap('https://maps.googleapis.com/maps/api/js?key=AIzaSyDWvBlgk3XhfDN1-mmzvzE9lJOX2A784gE&callback=initMap');
   }
@@ -76,7 +77,7 @@ class App extends Component {
   }
 
   // Throw an error if the map failes to load
-  map_error = () => {
+  gm_authFailure = () => {
     let errorName = "error";
     let errorContent = "OOPS!!! An error occurred while loding the map";
     let element = document.getElementById('map');
