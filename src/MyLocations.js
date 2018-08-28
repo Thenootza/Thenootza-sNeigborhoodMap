@@ -29,6 +29,8 @@ class MyLocations extends Component {
   render() {
         return (
           <div className='header'>
+          <h1 className="map-name">Beutifull places to visit</h1>
+          <a href="https://www.wikipedia.org/" target="_blanck" id="wiki">Powered by Wikipedia</a>
           <input
             type="text"
             title="Search place"
@@ -43,6 +45,7 @@ class MyLocations extends Component {
                 />
               ))}
             </ul>
+
             </div>
         )
     }

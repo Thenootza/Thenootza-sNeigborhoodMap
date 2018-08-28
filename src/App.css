@@ -10,32 +10,63 @@ body {
 }
 
 #map {
-  height: 90vh;
+  height: 105vh;
   width: 100%;
+}
+
+.map-name {
+  font-family: 'Tangerine', serif;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 .header {
   font-family: 'Tangerine', serif;
   font-size: 1.5em;
   background-color: #00b386;
-  padding: 0;
+  padding: 5px;
   margin: 0;
+
 }
 
 .header input{
   font-family: 'Tangerine', serif;
-  font-size: 1.5em;
+  font-size: 0.8em;
   width: 100%;
   border-radius: 1px;
   background-color: #e6fff9;
+  padding: 0;
+  margin-top: 2px;
 }
 
 .header ul{
-  padding: 0;
+  padding-left: 25px;
   margin: 0;
 }
 
 .anchors {
   font-family: 'Tangerine', serif;
   width: 200px;
+}
+
+#wiki {
+  float: right;
+  font-size: 0.8em;
+}
+
+@media screen and (min-width: 600px){
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 900px){
+  body {
+
+  }
 }
