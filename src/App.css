@@ -12,6 +12,11 @@ body {
 #map {
   height: 105vh;
   width: 100%;
+  /*To display the error messege when the map is not loding for some reason*/
+  font-size: 2.5em;
+  font-family: 'Tangerine', serif;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .map-name {
@@ -63,4 +68,19 @@ body {
     z-index: 5;
     height: 100%;
   }
+}
+
+@media screen and (min-width: 600px) and (max-width: 850px){
+  #map {
+    font-size: 1.2em;
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 850px) and (max-width: 1225px) {
+
+  #map {
+    text-align: right;
+  }
+
 }

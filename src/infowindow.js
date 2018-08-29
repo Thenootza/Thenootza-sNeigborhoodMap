@@ -22,7 +22,7 @@ export const markerInfo = (marker, infowindow) => {
       });
     }
   ).catch(function (err) {
-    infowindow.setContent("Loading data failed", err);
+    infowindow.setContent("Something went wrong! Please try again later!", err);
   });
 
 }
